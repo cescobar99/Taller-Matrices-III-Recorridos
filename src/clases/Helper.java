@@ -137,6 +137,7 @@ public class Helper {
         return aux;
 
     }
+
     public static String recorridoHaciaIzquierda(int[][] m, int i) {
         int nc = m[0].length;
         String aux = "";
@@ -268,6 +269,7 @@ public class Helper {
         return aux;
 
     }
+
     public static String mostrar(int[][] m) {
         String aux = "";
         for (int i = 0; i < m.length; i++) {
@@ -287,12 +289,25 @@ public class Helper {
         int nf = m.length;
         int nc = m[0].length;
         String aux = "";
-        aux= aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc-1);
-        aux= aux + Helper.recorridoHaciaAbajo(m, nc-1, 1, nc/2);
-        aux= aux + Helper.recorridoHaciaIzquierda(m, nf/2, nc-2, 0);
-        aux= aux + Helper.recorridoHaciaAbajo(m, 0, nf/2+1, nf-1);
-        aux= aux + Helper.recorridoHaciaDerecha(m, nf-1, nc/2-2, nc-1);
-        
+        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc - 1);
+        aux = aux + Helper.recorridoHaciaAbajo(m, nc - 1, 1, nc / 2);
+        aux = aux + Helper.recorridoHaciaIzquierda(m, nf / 2, nc - 2, 0);
+        aux = aux + Helper.recorridoHaciaAbajo(m, 0, nf / 2 + 1, nf - 1);
+        aux = aux + Helper.recorridoHaciaDerecha(m, nf - 1, nc / 2 - 2, nc - 1);
+
+        aux = aux.substring(0, aux.length() - 2) + ".";
+        return aux;
+    }
+     public static String recorridoDos(JTable tabla) {
+        int m[][] = pasoDeDatos(tabla);
+        int nf = m.length;
+        int nc = m[0].length;
+        String aux = "";
+        aux = aux + Helper.recorridoHaciaArriba(m, 0, nf-1, 1);
+        aux= aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc/2);
+        aux= aux + Helper.recorridoHaciaAbajo(m, nc/2, 1, nf-2);
+        aux= aux + Helper.recorridoHaciaDerecha(m, nf-1, nc/2, nc-1);
+        aux= aux + Helper.recorridoHaciaArriba(m, nc-1, nf-2, 0);
 
         aux = aux.substring(0, aux.length() - 2) + ".";
         return aux;

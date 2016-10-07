@@ -294,6 +294,7 @@ public class Principal extends javax.swing.JFrame {
     private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
         txtNumeroFilas.setText("");
         txtNumeroColumnas.setText("");
+        txtResultado.setText("");
         txtNumeroFilas.requestFocusInWindow();
         cmbOperaciones.setSelectedIndex(0);
 
@@ -312,6 +313,7 @@ public class Principal extends javax.swing.JFrame {
             case 0:
                 txtResultado.setText(Helper.recorridoUno(tblTablaInicial));
                 break;
+            case 1: txtResultado.setText(Helper.recorridoDos(tblTablaInicial));
         }
 
     }//GEN-LAST:event_cmdOperacionesActionPerformed
