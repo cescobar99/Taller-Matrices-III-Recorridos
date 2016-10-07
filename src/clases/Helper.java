@@ -298,18 +298,32 @@ public class Helper {
         aux = aux.substring(0, aux.length() - 2) + ".";
         return aux;
     }
-     public static String recorridoDos(JTable tabla) {
+
+    public static String recorridoDos(JTable tabla) {
         int m[][] = pasoDeDatos(tabla);
         int nf = m.length;
         int nc = m[0].length;
         String aux = "";
-        aux = aux + Helper.recorridoHaciaArriba(m, 0, nf-1, 1);
-        aux= aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc/2);
-        aux= aux + Helper.recorridoHaciaAbajo(m, nc/2, 1, nf-2);
-        aux= aux + Helper.recorridoHaciaDerecha(m, nf-1, nc/2, nc-1);
-        aux= aux + Helper.recorridoHaciaArriba(m, nc-1, nf-2, 0);
+        aux = aux + Helper.recorridoHaciaArriba(m, 0, nf - 1, 1);
+        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc / 2);
+        aux = aux + Helper.recorridoHaciaAbajo(m, nc / 2, 1, nf - 2);
+        aux = aux + Helper.recorridoHaciaDerecha(m, nf - 1, nc / 2, nc - 1);
+        aux = aux + Helper.recorridoHaciaArriba(m, nc - 1, nf - 2, 0);
+
+        aux = aux.substring(0, aux.length() - 2) + ".";
+        return aux;
+    }
+     public static String recorridoCuatro(JTable tabla) {
+        int m[][] = pasoDeDatos(tabla);
+        int nf = m.length;
+        int nc = m[0].length;
+        String aux = "";
+        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nc-2);
+        aux = aux + Helper.recorridoDiagonalSecundariaAbajo(m, 0, nf-2);
+        aux= aux + Helper.recorridoHaciaDerecha(m, nf-1, 0, nc-1);
 
         aux = aux.substring(0, aux.length() - 2) + ".";
         return aux;
     }
 }
+

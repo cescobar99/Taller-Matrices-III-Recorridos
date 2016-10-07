@@ -313,7 +313,14 @@ public class Principal extends javax.swing.JFrame {
             case 0:
                 txtResultado.setText(Helper.recorridoUno(tblTablaInicial));
                 break;
-            case 1: txtResultado.setText(Helper.recorridoDos(tblTablaInicial));
+            case 1:
+                txtResultado.setText(Helper.recorridoDos(tblTablaInicial));
+                break;
+            case 2:
+                break;
+            case 3:
+                txtResultado.setText(Helper.recorridoCuatro(tblTablaInicial));
+                break;
         }
 
     }//GEN-LAST:event_cmdOperacionesActionPerformed
