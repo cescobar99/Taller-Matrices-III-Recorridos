@@ -293,7 +293,7 @@ public class Helper {
         aux = aux + Helper.recorridoHaciaAbajo(m, nc - 1, 1, nc / 2);
         aux = aux + Helper.recorridoHaciaIzquierda(m, nf / 2, nc - 2, 0);
         aux = aux + Helper.recorridoHaciaAbajo(m, 0, nf / 2 + 1, nf - 1);
-        aux = aux + Helper.recorridoHaciaDerecha(m, nf - 1, nc / 2 - 2, nc - 1);
+        aux = aux + Helper.recorridoHaciaDerecha(m, nf - 1, 0+1, nc - 1);
 
         aux = aux.substring(0, aux.length() - 2) + ".";
         return aux;
