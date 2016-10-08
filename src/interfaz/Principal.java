@@ -21,6 +21,11 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        JButton botonesH[] = {cmdCrear, cmdLimpiar};
+        JButton botonesD[] = {cmdLlenarManual, cmdLlenarAutomatico, cmdOperaciones};
+
+        Helper.habilitarBotones(botonesH);
+        Helper.deshabilitarBotones(botonesD);
     }
 
     /**
@@ -73,7 +78,19 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 255));
         jLabel3.setText("Numero Columnas");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, 20));
+
+        txtNumeroFilas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroFilasKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNumeroFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 100, -1));
+
+        txtNumeroColumnas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroColumnasKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNumeroColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 100, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 310, 140));
@@ -206,12 +223,17 @@ public class Principal extends javax.swing.JFrame {
                 txtNumeroFilas.setText("");
                 txtNumeroColumnas.setText("");
                 txtNumeroColumnas.requestFocusInWindow();
-            } else if (nf > 13 && nc > 13) {
-                Helper.mensaje(this, "El Numero De filas y el numero de columnas no pueden ser mayor que 13", 2);
+            } else if (nf > 15 && nc > 15) {
+                Helper.mensaje(this, "El Numero De filas y el numero de columnas no pueden ser mayor que 15", 2);
                 txtNumeroFilas.requestFocusInWindow();
             } else if (nf < 5 && nc < 5) {
-                Helper.mensaje(this, "El numero de filas y el numero de columnas deben ser mayor a 5", nc);
+                Helper.mensaje(this, "El numero de filas y el numero de columnas deben ser mayor a 4", 3);
                 txtNumeroFilas.requestFocusInWindow();
+            } else if (nf != nc) {
+                Helper.mensaje(this, "El numero de filas y columnas deben ser iguales", 1);
+                txtNumeroFilas.requestFocusInWindow();
+            } else if (nf % 2 == 0 && nc % 2 == 0) {
+                Helper.mensaje(this, "El numero de filas y el numero de columnas deben ser impares", 1);
             } else {
                 tm = (DefaultTableModel) tblTablaInicial.getModel();
 
@@ -321,9 +343,31 @@ public class Principal extends javax.swing.JFrame {
             case 3:
                 txtResultado.setText(Helper.recorridoCuatro(tblTablaInicial));
                 break;
+            case 4:
+                txtResultado.setText(Helper.recorridoCinco(tblTablaInicial));
         }
 
     }//GEN-LAST:event_cmdOperacionesActionPerformed
+
+    private void txtNumeroFilasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroFilasKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumeroFilasKeyTyped
+
+    private void txtNumeroColumnasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroColumnasKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumeroColumnasKeyTyped
 
     /**
      * @param args the command line arguments
